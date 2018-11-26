@@ -8,7 +8,7 @@
 
 
 # 本地操作  
-##1 创建本地仓库  
+## 1 创建本地仓库  
 1. 创建一个空目录
 2. 通过git init把目录变为本地仓库
 ```
@@ -34,28 +34,22 @@ git init
 * 上一个版本：HEAD^
 * 上上上个版本：HEAD+3 
  
-
 git内部有个指向当前版本的HEAD指针，实现版本的回退需执行  
-1. 回退到上一个版本：``` git reset --hard HEAD^  ```  
-2. 回退到任意一个版本  
-```1. 查看提交历史记录，确定需要回退版本的commitID：git log ```            
-```2. 执行：git reset --hard commitID
-```  
-3. 重返到回退前的新版本 
-
- ```
- 1. 查看所有的commitID ： git reflog
- ```  
- ```
- 2.找到想要穿越未来的commitID：git reset --har commitid
+1. 回退到上一个版本``` git reset --hard HEAD^  ```  
+2. 回退到任意一个版本    
+```1. 查看提交历史记录，确定回退版本的commitID：git log```
+```2. 执行：git reset --hard commitID```  
+3. 重返到回退前的新版本   
+```1. 查看所有的commitID ： git reflog```  
+ ```2.找到想要穿越未来的commitID：git reset --har commitid
  ```  
 ## 4 撤销修改  
-### 如果想撤销对某个文件的修改，可以使用以下命令实现  
+* 如果想撤销对某个文件的修改，可以使用以下命令实现  
  1. 修改内容后未add到暂存区时，可以使用```git checkout --file ```  
  2. 修改内容后add到暂存区后，可以使用 ``` git reset HEAD <file>```  
  3. 修改内容后commit到版本库后，可以使用“版本回退”相关操作实现  
  
-### 如果删除了本地文件，可以使用以下命令删除版本库或恢复本地  
+* 如果删除了本地文件，可以使用以下命令删除版本库或恢复本地  
  代码commit到版本库后，删除了本地某个文件。
  
  1. 使用``` git status``` 查看工作区域版本库的区别  
@@ -80,17 +74,16 @@ git内部有个指向当前版本的HEAD指针，实现版本的回退需执行
  
 
 # 远程仓库 
-## 本地库与远程库的关联  
-1. 使用SSH把本地仓库与远程仓库进行关联
-2. 在远程仓库创建一个Git仓库
-3. 查看远程库信息``` git remote -v```
-3. 本地clone仓库 ``` git clone 远程仓库地址```
-4. 本地仓库推远程仓库 ``` git push -u origin 分支name```
+* 本地库与远程库的关联  
+  1. 使用SSH把本地仓库与远程仓库进行关联
+  2. 在远程仓库创建一个Git仓库
+  3. 查看远程库信息``` git remote -v```
+  3. 本地clone仓库 ``` git clone 远程仓库地址```
+  4. 本地仓库推远程仓库 ``` git push -u origin 分支name```
 
 
 # 分支管理
-git分支就是每次提交串成的一条时间线。在git里HEAD的指向当前分支的指针，如创建新分支Dev时，就是创建了一个指向master的指针，同时HEAD指向了Dev分支。
-##基本分支操作  
+* 基本分支操作  
 ```
 查看分支：git branch
 创建分支：git branch <name>
@@ -101,16 +94,18 @@ git分支就是每次提交串成的一条时间线。在git里HEAD的指向当�
 合并某分支到当前分支： git merge <某分支>
 删除分支：git branch -d <name>
 ``` 
-### 提交分支到远程仓库  
-1. 推送修改```git push origin branch-name ``` 
-2. 如推送失败，则更新本地分支```git pull ```
-3. 如提示 no tracking information 则需建立本地分支与远程分支的链接关系``` git branch --set-upstream-to <branch-name> origin/<branch-name>```
-3. 如合并有冲突解决冲突，本地提交
-4. 再次推送
+git分支就是每次提交串成的一条时间线。在git里HEAD的指向当前分支的指针，如创建新分支Dev时，就是创建了一个指向master的指针，同时HEAD指向了Dev分支。
+* 提交分支到远程仓库  
+  1. 推送修改```git push origin branch-name ``` 
+  2. 如推送失败，则更新本地分支```git pull ```
+  3. 如提示 no tracking information 则需建立本地分支与远程分支的链接关系``` git branch --set-upstream-to <branch-name> origin/<branch-name>```
+  3. 如合并有冲突解决冲突，本地提交
+  4. 再次推送
 
-### 解决冲突
+* 解决冲突
 当git无法合并时需先解决冲突，再提交合并。
 ``` git log --graph```查看分支合并图。
-### 合并模式
+
+* 合并模式
 git merge的模式分为：普通模式 和 fast forward。 fastforward合并后，如删除某个分支，会丢失该分支信息。故在合入代码时可使用``` git merge --no-ff -m'description'```命令切换到普通模式。
 
