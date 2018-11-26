@@ -36,13 +36,13 @@ git init
  
 git内部有个指向当前版本的HEAD指针，实现版本的回退需执行  
 1. 回退到上一个版本``` git reset --hard HEAD^  ```  
-2. 回退到任意一个版本    
+2. 回退到任意一个版本  
 ```1. 查看提交历史记录，确定回退版本的commitID：git log```
 ```2. 执行：git reset --hard commitID```  
 3. 重返到回退前的新版本   
 ```1. 查看所有的commitID ： git reflog```  
- ```2.找到想要穿越未来的commitID：git reset --har commitid
- ```  
+```2.找到想要穿越未来的commitID：git reset --har commitid```
+
 ## 4 撤销修改  
 * 如果想撤销对某个文件的修改，可以使用以下命令实现  
  1. 修改内容后未add到暂存区时，可以使用```git checkout --file ```  
