@@ -82,15 +82,14 @@ git内部有个指向当前版本的HEAD指针，实现版本的回退需执行
 # 分支管理
 * 基本分支操作  
 ```
-查看分支：git branch
-创建分支：git branch <name>
-切换分支：git checkout <name>
-创建+切换分支：git checkout -b <name>
-提交分支修改：git add /git commit
-切换到master分支：git
-合并某分支到当前分支： git merge <某分支>
-删除分支：git branch -d <name>
-``` 
+查看分支：git branch```  
+```创建分支：git branch <name>```  
+```切换分支：git checkout <name>```  
+```创建+切换分支：git checkout -b <本地分支name> origin/<远程分支name>```
+```提交分支修改：git add /git commit```
+```切换到master分支：git checkout master```  
+```合并某分支到当前分支： git merge <某分支>```. 
+```删除分支：git branch -d <name>``` 
 git分支就是每次提交串成的一条时间线。在git里HEAD的指向当前分支的指针，如创建新分支Dev时，就是创建了一个指向master的指针，同时HEAD指向了Dev分支。
 * 提交分支到远程仓库  
   1. 推送修改```git push origin branch-name ``` 
@@ -105,4 +104,5 @@ git分支就是每次提交串成的一条时间线。在git里HEAD的指向当�
 
 * 合并模式
 git merge的模式分为：普通模式 和 fast forward。 fastforward合并后，如删除某个分支，会丢失该分支信息。故在合入代码时可使用``` git merge --no-ff -m'description'```命令切换到普通模式。
+* 拉取分支时提示“fastline导致错误”，可使用```git submodule deinit fastlane ```
 
